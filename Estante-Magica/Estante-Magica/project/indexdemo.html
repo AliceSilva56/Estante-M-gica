@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Estante Mágica</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesdemo.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script type="module" src="scriptdemo.js"></script>
+    <link rel="icon" href="img/logo.png" type="image/png">
+</head>
+  </head>
+  <body>
+    <!-- Back Arrow -->
+    <button class="back-arrow" onclick="window.location.href='index.html'" title="Voltar para index.html">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <!-- Simulação de tela de celular -->
+    <div class="phone-container">
+      <div class="phone-screen">
+        <!-- Header -->
+        <header class="app-header">
+          <div class="header-content">
+            <h1><i class="fas fa-magic"></i> Estante Mágica</h1>
+            <button class="add-book-btn" id="addBookBtn">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+          <!-- Home Screen -->
+          <div class="screen active" id="homeScreen">
+            <div class="welcome-section">
+              <div class="magic-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>"Toda história merece um lugar mágico."</p>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <i class="fas fa-book-open"></i>
+                <span class="stat-number" id="readingCount">3</span>
+                <span class="stat-label">Lendo</span>
+              </div>
+              <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <span class="stat-number" id="readCount">12</span>
+                <span class="stat-label">Lidos</span>
+              </div>
+              <div class="stat-card">
+                <i class="fas fa-heart"></i>
+                <span class="stat-number" id="wishlistCount">8</span>
+                <span class="stat-label">Quero Ler</span>
+              </div>
+              <div class="stat-card">
+                <i class="fas fa-pen-fancy"></i>
+                <span class="stat-number" id="writingCount">2</span>
+                <span class="stat-label">Escrevendo</span>
+              </div>
+            </div>
+
+            <div class="recent-section">
+              <h3><i class="fas fa-clock"></i> Recentes</h3>
+              <div class="book-list" id="recentBooks">
+                <!-- Books will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Library Screen -->
+          <div class="screen" id="libraryScreen">
+            <div class="library-header">
+              <h2><i class="fas fa-books"></i> Minha Biblioteca</h2>
+              <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Todos</button>
+                <button class="filter-tab" data-filter="reading">Lendo</button>
+                <button class="filter-tab" data-filter="read">Lidos</button>
+                <button class="filter-tab" data-filter="wishlist">Quero Ler</button>
+                <button class="filter-tab" data-filter="writing">Escrevendo</button>
+              </div>
+            </div>
+            <div class="books-grid" id="booksGrid">
+              <!-- Books will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Search Screen -->
+          <div class="screen" id="searchScreen">
+            <div class="search-header">
+              <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar livros..." id="searchInput">
+              </div>
+            </div>
+            <div class="search-results" id="searchResults">
+              <div class="empty-state">
+                <i class="fas fa-search"></i>
+                <p>Digite para buscar em sua biblioteca</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Screen -->
+          <div class="screen" id="profileScreen">
+            <div class="profile-header">
+              <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <h2>Meu Perfil</h2>
+              <p class="profile-subtitle">Leitor apaixonado</p>
+            </div>
+
+            <div class="profile-stats">
+              <div class="profile-stat">
+                <span class="stat-value">23</span>
+                <span class="stat-name">Total de Livros</span>
+              </div>
+              <div class="profile-stat">
+                <span class="stat-value">156</span>
+                <span class="stat-name">Páginas Hoje</span>
+              </div>
+              <div class="profile-stat">
+                <span class="stat-value">12</span>
+                <span class="stat-name">Dias Lendo</span>
+              </div>
+            </div>
+
+            <div class="profile-options">
+              <div class="option-item">
+                <i class="fas fa-palette"></i>
+                <span>Personalizar Tema</span>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="option-item">
+                <i class="fas fa-download"></i>
+                <span>Backup da Biblioteca</span>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="option-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="option-item">
+                <i class="fas fa-info-circle"></i>
+                <span>Sobre o App</span>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+          <button class="nav-item active" data-screen="home">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+          </button>
+          <button class="nav-item" data-screen="library">
+            <i class="fa-solid fa-book"></i>
+            <span>Biblioteca</span>
+          </button>
+          <button class="nav-item" data-screen="search">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+          </button>
+          <button class="nav-item" data-screen="profile">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div class="modal" id="addBookModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-plus"></i> Adicionar Livro</h3>
+          <button class="close-btn" id="closeModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form class="add-book-form" id="addBookForm">
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" name="title" required>
+          </div>
+          <div class="form-group">
+            <label>Autor</label>
+            <input type="text" name="author" required>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select name="status" required>
+              <option value="reading">Lendo</option>
+              <option value="read">Lido</option>
+              <option value="wishlist">Quero Ler</option>
+              <option value="writing">Escrevendo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Páginas</label>
+            <input type="number" name="pages">
+          </div>
+          <div class="form-group">
+            <label>Notas</label>
+            <textarea name="notes" rows="3" placeholder="Suas impressões sobre o livro..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-save"></i> Salvar Livro
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
